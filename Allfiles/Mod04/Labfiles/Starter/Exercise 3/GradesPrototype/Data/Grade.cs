@@ -121,7 +121,8 @@ namespace GradesPrototype.Data
     }
 
     // TODO: Exercise 3: Task 2a: Specify that the Student class implements the IComparable<Student> interface
-    public class Student
+    // DONE
+    public class Student: IComparable<Student>
     {
         public int StudentID { get; set; }
         public string UserName { get; set; }
@@ -137,8 +138,8 @@ namespace GradesPrototype.Data
         public bool VerifyPassword(string pass)
         {
             return (String.Compare(pass, _password) == 0);
-        }
-        
+        }       
+
         public int TeacherID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -166,6 +167,11 @@ namespace GradesPrototype.Data
         }
 
         // TODO: Exercise 3: Task 2b: Compare Student objects based on their LastName and FirstName properties
+        // DONE
+        public int CompareTo(Student other)
+        {        
+            return (String.Compare(LastName + FirstName, other.LastName + other.FirstName));
+        }
 
     }
 
